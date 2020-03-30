@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathFx: {fileID: 626756425886058413, guid: 1e3e1b2dee568cc42b5779771e5a2c96, type: 3}
   parent: {fileID: 0}
-  hits: 15
+  hitPoints: 15
 --- !u!1001 &251225593712756219
 PrefabInstance:
   m_ObjectHideFlags: 0
