@@ -36,7 +36,6 @@ public class Pathfinder : MonoBehaviour {
     private void CreatePath () {
 
         SetAsPath (endWaypoint);
-
         Waypoint previous = endWaypoint.exploredFrom;
         while (previous != startWaypoint) {
             SetAsPath (previous);
@@ -44,7 +43,6 @@ public class Pathfinder : MonoBehaviour {
         }
 
         SetAsPath (startWaypoint);
-
         path.Reverse ();
     }
 
