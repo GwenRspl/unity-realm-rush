@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour {
 
-    [SerializeField] Waypoint startWayPoint, endWayPoint;
+    [SerializeField] Waypoint startWaypoint, endWaypoint;
 
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint> ();
     Queue<Waypoint> queue = new Queue<Waypoint> ();
@@ -29,24 +29,32 @@ public class Pathfinder : MonoBehaviour {
 
     private void CalculatePath () {
         LoadBlocks ();
-        ColorStartAndEnd ();
         BreadthFirstSearch ();
         CreatePath ();
     }
 
     private void CreatePath () {
-        path.Add (endWayPoint);
-        Waypoint previous = endWayPoint.exploredFrom;
-        while (previous != startWayPoint) {
-            path.Add (previous);
+
+        SetAsPath (endWaypoint);
+
+        Waypoint previous = endWaypoint.exploredFrom;
+        while (previous != startWaypoint) {
+            SetAsPath (previous);
             previous = previous.exploredFrom;
         }
-        path.Add (startWayPoint);
+
+        SetAsPath (startWaypoint);
+
         path.Reverse ();
     }
 
+    private void SetAsPath (Waypoint waypoint) {
+        path.Add (waypoint);
+        waypoint.isPlaceable = false;
+    }
+
     private void BreadthFirstSearch () {
-        queue.Enqueue (startWayPoint);
+        queue.Enqueue (startWaypoint);
 
         while (queue.Count > 0 && isRunning) {
             currentSearchCenter = queue.Dequeue ();
@@ -58,7 +66,7 @@ public class Pathfinder : MonoBehaviour {
     }
 
     private void HaltIfEndFound () {
-        if (currentSearchCenter == endWayPoint) {
+        if (currentSearchCenter == endWaypoint) {
             isRunning = false;
         }
     }
@@ -83,15 +91,9 @@ public class Pathfinder : MonoBehaviour {
         }
     }
 
-    private void ColorStartAndEnd () {
-        startWayPoint.SetTopColor (Color.green);
-        endWayPoint.SetTopColor (Color.red);
-    }
-
     private void LoadBlocks () {
         Waypoint[] waypoints = FindObjectsOfType<Waypoint> ();
         foreach (Waypoint waypoint in waypoints) {
-
             var gridPos = waypoint.GetGridPos ();
             if (grid.ContainsKey (gridPos)) {
                 Debug.LogWarning ("Skipping overlapping block " + waypoint);

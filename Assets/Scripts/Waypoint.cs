@@ -4,18 +4,28 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
 
-    [SerializeField] Color exploredColor;
-
     public bool isExplored = false; // ok as is a data class
     public Waypoint exploredFrom;
+    public bool isPlaceable = true;
 
     Vector2Int gridPos;
     const int gridSize = 10;
 
     void Update () {
-        // if(isExplored){
-        //     SetTopColor(exploredColor);
-        // }
+
+    }
+
+    void OnMouseOver () {
+        if (Input.GetMouseButtonDown (0)) {
+
+            if (isPlaceable) {
+                print (gameObject.name + " tower placement");
+
+            } else {
+                print ("cant place here");
+            }
+
+        }
     }
 
     public int GetGridSize () {
@@ -28,9 +38,4 @@ public class Waypoint : MonoBehaviour {
             Mathf.RoundToInt (transform.position.z / gridSize));
     }
 
-    public void SetTopColor (Color color) {
-        MeshRenderer topMeshRenderer = transform.Find ("Top").GetComponent<MeshRenderer> ();
-        topMeshRenderer.material.color = color;
-
-    }
 }
