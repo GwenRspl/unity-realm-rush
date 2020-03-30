@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
 
+    [SerializeField] Tower towerPrefab;
+
     public bool isExplored = false; // ok as is a data class
     public Waypoint exploredFrom;
     public bool isPlaceable = true;
@@ -19,8 +21,8 @@ public class Waypoint : MonoBehaviour {
         if (Input.GetMouseButtonDown (0)) {
 
             if (isPlaceable) {
-                print (gameObject.name + " tower placement");
-
+                Instantiate (towerPrefab, transform.position, Quaternion.identity);
+                isPlaceable = false;
             } else {
                 print ("cant place here");
             }
