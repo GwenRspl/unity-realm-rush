@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class EnemyDamage : MonoBehaviour {
 
     [SerializeField] GameObject deathFx;
     [SerializeField] Transform parent;
-    [SerializeField] int hits = 15;
+    [SerializeField] int hitPoints = 15;
 
     void Start () {
-        AddNonTriggerBoxCollider ();
+        //AddNonTriggerBoxCollider ();
     }
 
     private void AddNonTriggerBoxCollider () {
@@ -18,15 +18,14 @@ public class Enemy : MonoBehaviour {
     }
 
     private void OnParticleCollision (GameObject other) {
-        print ("something hit me! " + other + gameObject);
         ProcessHit ();
-        if (hits <= 0) {
+        if (hitPoints <= 0) {
             KillEnemy ();
         }
     }
 
     private void ProcessHit () {
-        hits--;
+        hitPoints--;
     }
 
     private void KillEnemy () {
