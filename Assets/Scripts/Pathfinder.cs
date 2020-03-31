@@ -6,6 +6,8 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour {
 
     [SerializeField] Waypoint startWaypoint, endWaypoint;
+    [SerializeField] GameObject pathTile;
+    [SerializeField] Transform pathTileParent;
 
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint> ();
     Queue<Waypoint> queue = new Queue<Waypoint> ();
@@ -22,15 +24,23 @@ public class Pathfinder : MonoBehaviour {
 
     public List<Waypoint> GetPath () {
         if (path.Count == 0) {
-            CalculatePath ();
+            PreparePath ();
         }
         return path;
     }
 
-    private void CalculatePath () {
+    private void PreparePath () {
         LoadBlocks ();
         BreadthFirstSearch ();
         CreatePath ();
+        AddTilesToPath ();
+    }
+
+    private void AddTilesToPath () {
+        foreach (Waypoint waypoint in path) {
+            var tile = Instantiate (pathTile, waypoint.transform.position, Quaternion.identity);
+            tile.transform.parent = pathTileParent;
+        }
     }
 
     private void CreatePath () {
