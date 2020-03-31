@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4787741887259745760
 Transform:
   m_ObjectHideFlags: 0
@@ -260,8 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d568b47736f064aaf738aa714498c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 1780412502699961888, guid: 341ec8be14387eb469ada46bf9f88ffc,
-    type: 3}
   isExplored: 0
   exploredFrom: {fileID: 0}
   isPlaceable: 1
@@ -274,7 +272,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1219471545100730, guid: 1b8fbee291cdc1046a281cb2b3b51bf7, type: 3}
       propertyPath: m_Name
-      value: Grass 01
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 4562075604489022, guid: 1b8fbee291cdc1046a281cb2b3b51bf7, type: 3}
       propertyPath: m_LocalPosition.x
