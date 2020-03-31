@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] EnemyMovement enemyPrefab; //we want to put only Enemy prefab, so this will only let us put a prefab that has an enemyMovement
     [SerializeField] Transform parent;
     [SerializeField] Text scoreText;
+    [SerializeField] AudioClip spawnEnemySFX;
 
     int enemiesSpawned = 0;
 
@@ -20,13 +21,18 @@ public class EnemySpawner : MonoBehaviour {
     IEnumerator RepeatedlySpawnEnemies () {
 
         while (true) {
+            GetComponent<AudioSource> ().PlayOneShot (spawnEnemySFX);
+
             EnemyMovement enemy = Instantiate (enemyPrefab, transform.position, Quaternion.identity);
             enemy.transform.parent = parent;
-
-            enemiesSpawned++;
-            scoreText.text = enemiesSpawned.ToString ();
+            AddScore ();
 
             yield return new WaitForSeconds (secondsBetweenSpawns);
         }
+    }
+
+    private void AddScore () {
+        enemiesSpawned++;
+        scoreText.text = enemiesSpawned.ToString ();
     }
 }

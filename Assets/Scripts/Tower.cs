@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour {
 
     //Parameters 
     [SerializeField] Transform objectToPan;
+    [SerializeField] Transform objectToPan2;
     [SerializeField] float attackRange = 30f;
     [SerializeField] ParticleSystem projectileParticle;
 
@@ -20,6 +21,7 @@ public class Tower : MonoBehaviour {
         SetTargetEnemy ();
         if (targetEnemy) {
             objectToPan.LookAt (targetEnemy);
+            objectToPan2.LookAt (targetEnemy);
             FireAtEnemy ();
         } else {
             Shoot (false);
