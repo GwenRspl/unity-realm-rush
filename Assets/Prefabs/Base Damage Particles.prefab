@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6670782387916853371}
   - component: {fileID: -7451805173706373323}
   m_Layer: 0
-  m_Name: EnemyDeathFX
+  m_Name: Base Damage Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1304,18 +1304,18 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 0.8094107, b: 0, a: 1}
-        key2: {r: 1, g: 0.5213852, b: 0.1929403, a: 0}
-        key3: {r: 1, g: 0.12793279, b: 0.06931186, a: 0}
-        key4: {r: 0.2735849, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 0, b: 0, a: 1}
+        key1: {r: 0, g: 0.8156863, b: 1, a: 1}
+        key2: {r: 0.07058823, g: 0.51961136, b: 1, a: 0}
+        key3: {r: 0, g: 0.3250141, b: 0.6698113, a: 0}
+        key4: {r: 0, g: 0.016040709, b: 0.27450982, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 2506
-        ctime1: 10601
-        ctime2: 23708
-        ctime3: 47609
+        ctime1: 24479
+        ctime2: 49344
+        ctime3: 64186
         ctime4: 65535
         ctime5: 0
         ctime6: 0
@@ -1329,7 +1329,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 5
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
