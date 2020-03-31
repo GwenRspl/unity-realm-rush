@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour {
 
     IEnumerator FollowPath (List<Waypoint> path) {
         foreach (Waypoint waypoint in path) {
+            transform.LookAt (waypoint.transform);
             transform.position = waypoint.transform.position;
             yield return new WaitForSeconds (movementPeriod);
         }
