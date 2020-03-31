@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-    [SerializeField] float movementPeriod = .5f;
+    [SerializeField] float movementPeriod = .25f;
     [SerializeField] ParticleSystem goalParticle;
 
     void Start () {
@@ -17,9 +17,9 @@ public class EnemyMovement : MonoBehaviour {
 
     IEnumerator FollowPath (List<Waypoint> path) {
         foreach (Waypoint waypoint in path) {
-            transform.LookAt (waypoint.transform);
+            this.transform.LookAt (waypoint.transform);
             FindObjectOfType<EnemyController> ().WalkForward (true);
-            transform.position = waypoint.transform.position;
+            this.transform.position = waypoint.transform.position;
             yield return new WaitForSeconds (movementPeriod);
         }
         SelfDestruct ();

@@ -12,6 +12,10 @@ public class Waypoint : MonoBehaviour {
     const int gridSize = 10;
 
     void Update () {
+        if (Input.GetButtonDown ("Cancel")) {
+            print ("Escaping the game ...");
+            Application.Quit ();
+        }
 
     }
 
