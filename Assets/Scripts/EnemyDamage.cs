@@ -32,7 +32,7 @@ public class EnemyDamage : MonoBehaviour {
         ParticleSystem fx = Instantiate (deathFx, transform.position, Quaternion.identity);
         Destroy (fx.gameObject, fx.main.duration);
 
-        AudioSource.PlayClipAtPoint (enemyDeathSFX, transform.position);
+        AudioSource.PlayClipAtPoint (enemyDeathSFX, Camera.main.transform.position); //sound called this way will be 3D so if far from camera, we can't hear. So we have to put the sound next to the camera
         Destroy (gameObject);
     }
 }
